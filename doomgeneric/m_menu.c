@@ -117,13 +117,17 @@ char			saveOldString[SAVESTRINGSIZE];
 boolean			inhelpscreens;
 boolean			menuactive;
 
-#define SKULLXOFF		-32
+#define SKULLXOFF		-20
 #define LINEHEIGHT		16
 
 extern boolean		sendpause;
 char			savegamestrings[10][SAVESTRINGSIZE];
 
 char	endstring[160];
+
+
+int menuOffset = -300;
+
 
 //static boolean opldev;
 
@@ -256,7 +260,7 @@ menu_t  MainDef =
     NULL,
     MainMenu,
     M_DrawMainMenu,
-    97,64,
+    20,64,
     0
 };
 
@@ -602,7 +606,7 @@ void M_DrawSave(void)
 {
     int             i;
 	
-    V_DrawPatchDirect(72, 28, W_CacheLumpName(DEH_String("M_SAVEG"), PU_CACHE));
+    V_DrawPatchDirect(2, 28, W_CacheLumpName(DEH_String("M_SAVEG"), PU_CACHE));
     for (i = 0;i < load_end; i++)
     {
 	M_DrawSaveLoadBorder(LoadDef.x,LoadDef.y+LINEHEIGHT*i);
@@ -889,7 +893,7 @@ void M_MusicVol(int choice)
 //
 void M_DrawMainMenu(void)
 {
-    V_DrawPatchDirect(94, 2,
+    V_DrawPatchDirect(10, 2,
                       W_CacheLumpName(DEH_String("M_DOOM"), PU_CACHE));
 }
 
@@ -901,8 +905,8 @@ void M_DrawMainMenu(void)
 //
 void M_DrawNewGame(void)
 {
-    V_DrawPatchDirect(96, 14, W_CacheLumpName(DEH_String("M_NEWG"), PU_CACHE));
-    V_DrawPatchDirect(54, 38, W_CacheLumpName(DEH_String("M_SKILL"), PU_CACHE));
+    V_DrawPatchDirect(2, 14, W_CacheLumpName(DEH_String("M_NEWG"), PU_CACHE));
+    V_DrawPatchDirect(2, 38, W_CacheLumpName(DEH_String("M_SKILL"), PU_CACHE));
 }
 
 void M_NewGame(int choice)
@@ -934,20 +938,25 @@ void M_DrawEpisode(void)
 
 void M_VerifyNightmare(int key)
 {
-    if (key != key_menu_confirm)
+    // am I a bastard for doing this? yes.
+    // but I reckon this will teach a lesson
+    // to dave. fuck you dave.
+
+    /*if (key != key_menu_confirm)
 	return;
 		
     G_DeferedInitNew(nightmare,epi+1,1);
     M_ClearMenus ();
+    */
 }
 
 void M_ChooseSkill(int choice)
 {
-    if (choice == nightmare)
+    /*if (choice == nightmare)
     {
 	M_StartMessage(DEH_String(NIGHTMARE),M_VerifyNightmare,true);
 	return;
-    }
+    }*/
 	
     G_DeferedInitNew(choice,epi+1,1);
     M_ClearMenus ();
@@ -1402,8 +1411,8 @@ M_WriteText
 
 static boolean IsNullKey(int key)
 {
-    return key == KEY_PAUSE || key == KEY_CAPSLOCK
-        || key == KEY_SCRLCK || key == KEY_NUMLOCK;
+    return key == DG_KEY_PAUSE || key == DG_KEY_CAPSLOCK
+        || key == DG_KEY_SCRLCK || key == DG_KEY_NUMLOCK;
 }
 
 //
@@ -1567,7 +1576,7 @@ boolean M_Responder (event_t* ev)
     {
 	switch(key)
 	{
-	  case KEY_BACKSPACE:
+	  case DG_KEY_BACKSPACE:
 	    if (saveCharIndex > 0)
 	    {
 		saveCharIndex--;
@@ -1575,13 +1584,13 @@ boolean M_Responder (event_t* ev)
 	    }
 	    break;
 
-          case KEY_ESCAPE:
+          case DG_KEY_ESCAPE:
             saveStringEnter = 0;
             M_StringCopy(savegamestrings[saveSlot], saveOldString,
                          SAVESTRINGSIZE);
             break;
 
-	  case KEY_ENTER:
+	  case DG_KEY_ENTER:
 	    saveStringEnter = 0;
 	    if (savegamestrings[saveSlot][0])
 		M_DoSave(saveSlot);
@@ -1626,7 +1635,7 @@ boolean M_Responder (event_t* ev)
     {
 	if (messageNeedsInput)
         {
-            if (key != ' ' && key != KEY_ESCAPE
+            if (key != ' ' && key != DG_KEY_ESCAPE
              && key != key_menu_confirm && key != key_menu_abort)
             {
                 return false;

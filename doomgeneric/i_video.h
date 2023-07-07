@@ -24,8 +24,8 @@
 
 // Screen width and height.
 
-#define SCREENWIDTH  320
-#define SCREENHEIGHT 200
+#define SCREENWIDTH  640
+#define SCREENHEIGHT 400
 
 // Screen width used for "squash" scale functions
 

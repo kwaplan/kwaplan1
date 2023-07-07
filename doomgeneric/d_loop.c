@@ -705,6 +705,15 @@ static void SinglePlayerClear(ticcmd_set_t *set)
 
 void TryRunTics (void)
 {
+    /*
+    
+    for anyone wanting to know, all the printfs saying "yep it survived here" were
+    because I thought this code had a problem with my raylib thingy when in fact
+    it was my raylib thingy that made the program not render shit.
+    
+    */
+
+    // printf("yep it survived here 1 :)\n");
     int	i;
     int	lowtic;
     int	entertic;
@@ -717,21 +726,23 @@ void TryRunTics (void)
     entertic = I_GetTime() / ticdup;
     realtics = entertic - oldentertics;
     oldentertics = entertic;
-
+    // printf("yep it survived here 2 electric boogaloo :)\n");
     // in singletics mode, run a single tic every time this function
     // is called.
 
     if (singletics)
     {
         BuildNewTic();
+       //  printf("yep it survived here 3 :)\n");
     }
     else
     {
         NetUpdate ();
+     //    printf("yep it survived here 3 but fancy :)\n");
     }
 
     lowtic = GetLowTic();
-
+    // printf("yep it survived here 4 :)\n");
     availabletics = lowtic - gametic/ticdup;
 
     // decide how many tics to run
@@ -758,7 +769,7 @@ void TryRunTics (void)
             OldNetSync();
         }
     }
-
+    // printf("yep it survived here 5 :)\n");
     if (counts < 1)
 	counts = 1;
 
@@ -767,7 +778,7 @@ void TryRunTics (void)
     while (!PlayersInGame() || lowtic < gametic/ticdup + counts)
     {
 	NetUpdate ();
-
+    // printf("yep it survived here 6 :)\n");
         lowtic = GetLowTic();
 
 	if (lowtic < gametic/ticdup)
@@ -783,7 +794,7 @@ void TryRunTics (void)
 
         I_Sleep(1);
     }
-
+    // printf("yep it survived here 7 :)\n");
     // run the count * ticdup dics
     while (counts--)
     {
@@ -818,6 +829,7 @@ void TryRunTics (void)
 
 	NetUpdate ();	// check for new console commands
     }
+    // printf("yep it survived here :)\n");
 }
 
 void D_RegisterLoopCallbacks(loop_interface_t *i)

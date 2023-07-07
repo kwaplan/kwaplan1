@@ -133,7 +133,7 @@ anim_t*		lastanim;
 //
 //      Animating line specials
 //
-#define MAXLINEANIMS            64
+#define MAXLINEANIMS            4096
 
 extern  short	numlinespecials;
 extern  line_t*	linespeciallist[MAXLINEANIMS];
@@ -1464,7 +1464,7 @@ void P_SpawnSpecials (void)
             if (numlinespecials >= MAXLINEANIMS)
             {
                 I_Error("Too many scrolling wall linedefs! "
-                        "(Vanilla limit is 64)");
+                        "(kwaplan limit is 4096)");
             }
 	    // EFFECT FIRSTCOL SCROLL+
 	    linespeciallist[numlinespecials] = &lines[i];

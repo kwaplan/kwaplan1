@@ -40,7 +40,7 @@
 
 
 // Fineangles in the SCREENWIDTH wide window.
-#define FIELDOFVIEW		2048	
+#define FIELDOFVIEW		2048
 
 
 

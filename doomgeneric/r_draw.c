@@ -38,9 +38,10 @@
 
 
 // ?
-#define MAXWIDTH			1120
-#define MAXHEIGHT			832
-
+// #define MAXWIDTH			1120
+// #define MAXHEIGHT			832
+#define MAXWIDTH			2240
+#define MAXHEIGHT			1664
 // status bar height at bottom of screen
 #define SBARHEIGHT		32
 

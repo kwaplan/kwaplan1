@@ -77,7 +77,7 @@
 #define ST_FACEPROBABILITY		96
 
 // For Responder
-#define ST_TOGGLECHAT		KEY_ENTER
+#define ST_TOGGLECHAT		DG_KEY_ENTER
 
 // Location of status bar
 #define ST_X				0
@@ -1412,5 +1412,6 @@ void ST_Init (void)
 {
     ST_loadData();
     st_backing_screen = (byte *) Z_Malloc(ST_WIDTH * ST_HEIGHT, PU_STATIC, 0);
+    printf("st initted well afaik :)\n");
 }
 

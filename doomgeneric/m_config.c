@@ -1588,21 +1588,21 @@ static default_t *SearchCollection(default_collection_t *collection, char *name)
 static const int scantokey[128] =
 {
     0  ,    27,     '1',    '2',    '3',    '4',    '5',    '6',
-    '7',    '8',    '9',    '0',    '-',    '=',    KEY_BACKSPACE, 9,
+    '7',    '8',    '9',    '0',    '-',    '=',    DG_KEY_BACKSPACE, 9,
     'q',    'w',    'e',    'r',    't',    'y',    'u',    'i',
-    'o',    'p',    '[',    ']',    13,		KEY_RCTRL, 'a',    's',
+    'o',    'p',    '[',    ']',    13,		DG_KEY_RCTRL, 'a',    's',
     'd',    'f',    'g',    'h',    'j',    'k',    'l',    ';',
-    '\'',   '`',    KEY_RSHIFT,'\\',   'z',    'x',    'c',    'v',
-    'b',    'n',    'm',    ',',    '.',    '/',    KEY_RSHIFT,KEYP_MULTIPLY,
-    KEY_RALT,  ' ',  KEY_CAPSLOCK,KEY_F1,  KEY_F2,   KEY_F3,   KEY_F4,   KEY_F5,
-    KEY_F6,   KEY_F7,   KEY_F8,   KEY_F9,   KEY_F10,  /*KEY_NUMLOCK?*/KEY_PAUSE,KEY_SCRLCK,KEY_HOME,
-    KEY_UPARROW,KEY_PGUP,KEY_MINUS,KEY_LEFTARROW,KEYP_5,KEY_RIGHTARROW,KEYP_PLUS,KEY_END,
-    KEY_DOWNARROW,KEY_PGDN,KEY_INS,KEY_DEL,0,   0,      0,      KEY_F11,
-    KEY_F12,  0,      0,      0,      0,      0,      0,      0,
+    '\'',   '`',    DG_KEY_RSHIFT,'\\',   'z',    'x',    'c',    'v',
+    'b',    'n',    'm',    ',',    '.',    '/',    DG_KEY_RSHIFT,KEYP_MULTIPLY,
+    DG_KEY_RALT,  ' ',  DG_KEY_CAPSLOCK,DG_KEY_F1,  DG_KEY_F2,   DG_KEY_F3,   DG_KEY_F4,   DG_KEY_F5,
+    DG_KEY_F6,   DG_KEY_F7,   DG_KEY_F8,   DG_KEY_F9,   DG_KEY_F10,  /*KEY_NUMLOCK?*/DG_KEY_PAUSE,DG_KEY_SCRLCK,DG_KEY_HOME,
+    DG_KEY_UPARROW,DG_KEY_PGUP,DG_KEY_MINUS,DG_KEY_LEFTARROW,KEYP_5,DG_KEY_RIGHTARROW,KEYP_PLUS,DG_KEY_END,
+    DG_KEY_DOWNARROW,DG_KEY_PGDN,DG_KEY_INS,DG_KEY_DEL,0,   0,      0,      DG_KEY_F11,
+    DG_KEY_F12,  0,      0,      0,      0,      0,      0,      0,
     0,      0,      0,      0,      0,      0,      0,      0,
     0,      0,      0,      0,      0,      0,      0,      0,
     0,      0,      0,      0,      0,      0,      0,      0,
-    0,      0,      0,      0,      0,      0,      KEY_PRTSCR, 0
+    0,      0,      0,      0,      0,      0,      DG_KEY_PRTSCR, 0
 };
 
 
